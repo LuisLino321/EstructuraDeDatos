@@ -1,0 +1,103 @@
+PASOS PARA CREAR PROGRAMA CON CLASES EN C++
+Integrantes: Gabriela Rivero
+	     Sebastian Sorich
+	     Milko Moreno
+	     Luis Lino
+  	     Miguel Quiroz
+1. Crear un proyecto en visual c++ con Windows Form Application y asignarle un nombre. 
+2. En el form añadir las herramientas que se van a necesitar y asignarle nombre a cada una.
+4. Se debe hacer click en project -> add class.
+2. Asignar un nombre a la clase.
+    Triangulos
+3. Dentro del .h se deben definir los tributos (en private) y los métodos (en public).
+    #pragma once
+    ref class Triangulos
+    {
+    private:
+	 int base;
+	 int altura;
+	 int area;
+    public:
+	Triangulos(void);
+	 int Get_base();
+	 int Get_altura();
+	 void Set_base(int b);
+	 void Set_altura(int h);
+	 int Get_area();
+	 void Set_area(int a);
+	 int calcular();
+    };
+4. Dentro del .cpp llamamos a todas las funciones que se necesitarán para calcular la operación respectiva que también se declaRa en el cpp.
+   #include "StdAfx.h"
+    #include "Triangulos.h"
+
+
+    Triangulos::Triangulos(void)
+    {
+    }
+    int Triangulos::Get_base()
+    {
+	return base;
+    }
+    int Triangulos::Get_altura()
+    {
+	return altura;
+    }
+    void Triangulos::Set_base(int b)
+    { 
+	base=b;
+    }
+    void Triangulos::Set_altura(int h)
+    {
+ 	altura=h;
+    }
+    int Triangulos::Get_area()
+    {
+	return area;
+    }
+    void Triangulos::Set_area(int a){
+	area=a;
+    }
+    int Triangulos::calcular()
+    {
+	area=(base*altura)/2;
+	return area;
+    }
+5. Vamos al form, hacemos doble click y se abrirá un form1.h
+6. Dentro del form1.h se agrega las librerías correspondientes
+    #include "Triangulos.h"
+    #include <iostream>
+    #include <msclr\marshal_cppstd.h>
+	using namespace std;
+	using namespace msclr;
+7. Abajo creamos el objeto con sus funciones
+    #pragma endregion
+
+    private: System::Void lblBase_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+    private: System::Void lblAltura_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+    private: System::Void btnCalcular_Click(System::Object^  sender, System::EventArgs^  e) {
+			 Triangulos triangulito;
+			 triangulito.Set_base(System::Convert::ToInt32(txtBase-> Text));
+			 triangulito.Set_altura(System::Convert::ToInt32(txtAltura-> Text));
+			 int areaT;
+			 areaT = triangulito.calcular();
+			 txtArea -> Text = System::Convert::ToString(areaT);
+		 }
+
+    private: System::Void txtArea_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		 }
+    private: System::Void txtAltura_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		 }
+    private: System::Void txtBase_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		 }
+    };
+    }
+
+
+
+
+                      
+
+		 
